@@ -1,6 +1,6 @@
 .idea/
 composer.lock
 /vendor
-/cert
+cert/*
 azulTest.php
 .idea/*
