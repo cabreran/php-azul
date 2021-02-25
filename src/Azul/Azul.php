@@ -76,7 +76,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ["AzulOrderId", "OriginalDate", "Amount", "Itbis"]);
+            $valid = $this->validation($data, ["AzulOrderId", "OriginalDate", "Amount", "Itbis", "CustomOrderId"], 'required');
 
             if($valid['Valid'] == FALSE)
             {
@@ -100,14 +100,21 @@ class Azul
 
     public function hold(array $data = [])
     {
-        //validation
-
         if(!empty($data))
         {
-            $body                     = $this->setBody($data);
-            $body["TrxType"]          = "Hold";
+            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', 'OriginalDate', "Amount", "Itbis"], 'required');
 
-            return $this->request($body);
+            if($valid['Valid'] == FALSE)
+            {
+                $body                     = $this->setBody($data);
+                $body["TrxType"]          = "Hold";
+
+                return $this->request($body);
+            }
+            else
+            {
+                return json_decode(json_encode($valid, JSON_FORCE_OBJECT));
+            }
         }
         else
         {
@@ -117,15 +124,22 @@ class Azul
 
     public function post(array $data = [])
     {
-        //validation
-
         if(!empty($data))
         {
-            $body                     = $this->setBody($data, TRUE);
-            $body["Store"]            = $this->defaultBody['Store'];
-            $body["Channel"]          = $this->defaultBody['Channel'];
+            $valid = $this->validation($data, ['AzulOrderId', "Amount", "Itbis"], 'required');
 
-            return $this->request($body, '?ProcessPost');
+            if($valid['Valid'] == FALSE)
+            {
+                $body                     = $this->setBody($data, TRUE);
+                $body["Store"]            = $this->defaultBody['Store'];
+                $body["Channel"]          = $this->defaultBody['Channel'];
+
+                return $this->request($body, '?ProcessPost');
+            }
+            else
+            {
+                return json_decode(json_encode($valid, JSON_FORCE_OBJECT));
+            }
         }
         else
         {
@@ -135,14 +149,22 @@ class Azul
 
     public function cancel(array $data = [])
     {
-
         if(!empty($data))
         {
-            $body                     = $this->setBody($data, TRUE);
-            $body["Store"]            = $this->defaultBody['Store'];
-            $body["Channel"]          = $this->defaultBody['Channel'];
+            $valid = $this->validation($data, ['AzulOrderId'], 'required');
 
-            return $this->request($body, '?ProcessVoid');
+            if($valid['Valid'] == FALSE)
+            {
+                $body                     = $this->setBody($data, TRUE);
+                $body["Store"]            = $this->defaultBody['Store'];
+                $body["Channel"]          = $this->defaultBody['Channel'];
+
+                return $this->request($body, '?ProcessVoid');
+            }
+            else
+            {
+                return json_decode(json_encode($valid, JSON_FORCE_OBJECT));
+            }
         }
         else
         {
@@ -153,15 +175,22 @@ class Azul
 
     public function verify(array $data = [])
     {
-        //validation
-
         if(!empty($data))
         {
-            $body                     = $this->setBody($data, TRUE);
-            $body["Store"]            = $this->defaultBody['Store'];
-            $body["Channel"]          = $this->defaultBody['Channel'];
+            $valid = $this->validation($data, ['CustomOrderId'], 'required');
 
-            return $this->request($body, '?VerifyPayment');
+            if($valid['Valid'] == FALSE)
+            {
+                $body                     = $this->setBody($data, TRUE);
+                $body["Store"]            = $this->defaultBody['Store'];
+                $body["Channel"]          = $this->defaultBody['Channel'];
+
+                return $this->request($body, '?VerifyPayment');
+            }
+            else
+            {
+                return json_decode(json_encode($valid, JSON_FORCE_OBJECT));
+            }
         }
         else
         {
@@ -171,16 +200,23 @@ class Azul
 
     public function createToken(array $data = [])
     {
-        //validation
-
         if(!empty($data))
         {
-            $body                     = $this->setBody($data, TRUE);
-            $body["TrxType"]          = 'CREATE';
-            $body["Store"]            = $this->defaultBody['Store'];
-            $body["Channel"]          = $this->defaultBody['Channel'];
+            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC'], 'required');
 
-            return $this->request($body, '?ProcessDataVault');
+            if($valid['Valid'] == FALSE)
+            {
+                $body                     = $this->setBody($data, TRUE);
+                $body["TrxType"]          = 'CREATE';
+                $body["Store"]            = $this->defaultBody['Store'];
+                $body["Channel"]          = $this->defaultBody['Channel'];
+
+                return $this->request($body, '?ProcessDataVault');
+            }
+            else
+            {
+                return json_decode(json_encode($valid, JSON_FORCE_OBJECT));
+            }
         }
         else
         {
@@ -190,16 +226,23 @@ class Azul
 
     public function deleteToken(array $data = [])
     {
-        //validation
-
         if(!empty($data))
         {
-            $body                     = $this->setBody($data, TRUE);
-            $body["TrxType"]          = 'DELETE';
-            $body["Store"]            = $this->defaultBody['Store'];
-            $body["Channel"]          = $this->defaultBody['Channel'];
+            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC'], 'required');
 
-            return $this->request($body, '?ProcessDataVault');
+            if($valid['Valid'] == FALSE)
+            {
+                $body                     = $this->setBody($data, TRUE);
+                $body["TrxType"]          = 'DELETE';
+                $body["Store"]            = $this->defaultBody['Store'];
+                $body["Channel"]          = $this->defaultBody['Channel'];
+
+                return $this->request($body, '?ProcessDataVault');
+            }
+            else
+            {
+                return json_decode(json_encode($valid, JSON_FORCE_OBJECT));
+            }
         }
         else
         {
