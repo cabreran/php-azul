@@ -6,7 +6,15 @@
     "authors": [
         {
             "name": "Dustin Baez",
-            "email": "dbaez@pulsar.com.do"
+            "email": "dbaez@pulsar.com.do",
+        },
+        {
+            "name": "Nelson Cabrera",
+            "email": "cabreran@pulsar.com.do",
+        },
+        {
+            "name": "Erickson Disla",
+            "email": "edisla@pulsar.com.do",
         }
     ],
     "require": {

@@ -46,7 +46,7 @@ class Azul
         $this->client           = new Client();
     }
 
-    public function sales(array $data = [], $hasToken = FALSE)
+    public function sale(array $data = [], $hasToken = FALSE)
     {
         if(!empty($data))
         {
