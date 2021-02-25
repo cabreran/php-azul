@@ -228,7 +228,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC'], 'required');
+            $valid = $this->validation($data, ['DataVaultToken'], 'required');
 
             if($valid['Valid'] == FALSE)
             {
