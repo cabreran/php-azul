@@ -21,8 +21,8 @@ class Azul
         $this->mode             = $mode;
         $this->url              = ($mode == 'live')? self::LIVE_API_URL : self::SANDBOX_API_URL;
         $this->settings         = [
-            'auth1'                 => 'testcert2',
-            'auth2'                 => 'testcert2',
+            'auth1'                 => '',
+            'auth2'                 => '',
             'method'                => 'POST',
             'content_type'          => 'application/json',
             'certificate_path'      => '',
@@ -230,6 +230,24 @@ class Azul
                 if(isset($this->settings[$key]))
                 {
                     $this->settings[$key] = ($data[$key] == "" || $data[$key] == null)? $this->settings[$key] : $data[$key];
+                }
+            }
+        }
+        else
+        {
+            return array('error' => $this->msgError, 'data' => $data);
+        }
+    }
+
+    public function setDefaultBody(array $data = [])
+    {
+        if(!empty($data))
+        {
+            foreach ($data as $key => $value)
+            {
+                if(isset($this->defaultBody[$key]))
+                {
+                    $this->defaultBody[$key] = ($data[$key] == "" || $data[$key] == null)? $this->defaultBody[$key] : $data[$key];
                 }
             }
         }
