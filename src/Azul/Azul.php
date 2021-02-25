@@ -30,7 +30,7 @@ class Azul
         ];
         $this->defaultBody     = [
             "Channel"               => "EC",
-            "Store"                 => "39038540035",
+            "Store"                 => "",
             "PosInputMode"          => "E-Commerce",
             "CurrencyPosCode"       => "$",
             "Payments"              => "1",
@@ -39,7 +39,7 @@ class Azul
             "AcquirerRefData"       => "1",
             "RRN"                   => null,
             "OrderNumber"           => "",
-            "ECommerceUrl"          => "https://app.cashflow.do/",
+            "ECommerceUrl"          => "",
             "ForceNo3DS"            => "0",
             "SaveToDataVault"       => "1"
         ];
