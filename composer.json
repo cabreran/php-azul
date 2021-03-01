@@ -1,6 +1,7 @@
 {
     "name": "cabreran/php-azul",
     "description": "AZUL web services PHP library",
+    "keywords": ["api", "guzzle", "azul", "cashflow"],
     "license": "MIT",
     "type": "library",
     "authors": [
