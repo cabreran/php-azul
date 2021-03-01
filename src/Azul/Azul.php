@@ -76,7 +76,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ["AzulOrderId", "OriginalDate", "Amount", "Itbis", "CustomOrderId"], 'required');
+            $valid = $this->validation($data, ["AzulOrderId", "OriginalDate", "Amount", "CustomOrderId"], 'required');
 
             if($valid['Valid'] == FALSE)
             {
@@ -102,7 +102,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', 'OriginalDate', "Amount", "Itbis"], 'required');
+            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', 'OriginalDate', "Amount"], 'required');
 
             if($valid['Valid'] == FALSE)
             {
@@ -126,7 +126,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ['AzulOrderId', "Amount", "Itbis"], 'required');
+            $valid = $this->validation($data, ['AzulOrderId', "Amount"], 'required');
 
             if($valid['Valid'] == FALSE)
             {
