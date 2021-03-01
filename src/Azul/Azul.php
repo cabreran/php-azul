@@ -68,7 +68,7 @@ class Azul
         }
         else
         {
-            return json_decode(json_encode(array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data), JSON_FORCE_OBJECT));
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -94,7 +94,7 @@ class Azul
         }
         else
         {
-            return json_decode(json_encode(array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data), JSON_FORCE_OBJECT));
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -118,7 +118,7 @@ class Azul
         }
         else
         {
-            return array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -143,7 +143,7 @@ class Azul
         }
         else
         {
-            return array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -168,8 +168,7 @@ class Azul
         }
         else
         {
-            return array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data);
-
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -194,7 +193,7 @@ class Azul
         }
         else
         {
-            return array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -220,7 +219,7 @@ class Azul
         }
         else
         {
-            return array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -246,7 +245,7 @@ class Azul
         }
         else
         {
-            return array('ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -278,7 +277,7 @@ class Azul
         }
         else
         {
-            return array('error' => $this->msgError, 'data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -296,7 +295,7 @@ class Azul
         }
         else
         {
-            return array('error' => $this->msgError, 'data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -372,6 +371,6 @@ class Azul
 
         $valid = ($valid > 0)? TRUE : FALSE;
 
-        return array('Valid' => $valid, 'ErrorDescription' => 'VALIDATE_REQUIRED', 'MsgError' => 'The following data is required ['.trim($fieldReq, ',').']');
+        return array('Valid' => $valid, 'ResponseCode' => 'error',  'ErrorDescription' => 'VALIDATE_REQUIRED', 'MsgError' => 'The following data is required ['.trim($fieldReq, ',').']');
     }
 }
