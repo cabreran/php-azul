@@ -68,7 +68,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -94,7 +94,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA','ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -118,7 +118,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -143,7 +143,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -168,7 +168,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -193,7 +193,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -219,7 +219,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -245,7 +245,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -277,7 +277,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
         }
     }
 
@@ -295,7 +295,7 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'MsgError' => $this->msgError, 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseCode' => $this->msgError, 'Data' => $data);
         }
     }
 
@@ -340,7 +340,7 @@ class Azul
     private function validation(array $data, array $expectedData, $action)
     {
         $action = explode('|', $action);
-        $res    =  array('Valid' => FALSE, 'ErrorDescription' => '', 'MsgError' => '');
+        $res    =  array('Valid' => FALSE, 'ResponseCode' => 'error', 'ErrorDescription' => '', 'ResponseMessage' => '');
 
         foreach ($action as $key => $value)
         {
@@ -371,6 +371,6 @@ class Azul
 
         $valid = ($valid > 0)? TRUE : FALSE;
 
-        return array('Valid' => $valid, 'ResponseCode' => 'error',  'ErrorDescription' => 'VALIDATE_REQUIRED', 'MsgError' => 'The following data is required ['.trim($fieldReq, ',').']');
+        return array('Valid' => $valid, 'ResponseCode' => 'error',  'ErrorDescription' => 'VALIDATE_REQUIRED', 'ResponseMessage' => 'The following data is required ['.trim($fieldReq, ',').']');
     }
 }
