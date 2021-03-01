@@ -50,7 +50,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $expectedData = ($hasToken == FALSE)? ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', "Amount", "Itbis"] : ['DataVaultToken', 'CustomOrderId', "Amount", "Itbis"];
+            $expectedData = ($hasToken == FALSE)? ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', "Amount"] : ['DataVaultToken', 'CustomOrderId', "Amount", "Itbis"];
 
             $valid = $this->validation($data, $expectedData, 'required');
 
