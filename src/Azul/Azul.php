@@ -1,4 +1,18 @@
 <?php
+
+/**
+ * AZUL web services PHP library
+ *
+ * Manage requests to the Azul API
+ *
+ * @package	    Cashflow
+ * @subpackage	Cashflow
+ * @category	library-API
+ * @author	    Pulsar Dev Team
+ * @copyright	Copyright (c) 2010 - 2021, Pulsar Technologies SRL (http://www.pulsar.com.do)
+ * @link	    http://www.pulsar.com.do
+ */
+
 namespace Azul;
 
 use GuzzleHttp\Client;
@@ -46,13 +60,18 @@ class Azul
         $this->client           = new Client();
     }
 
+    /**
+     * Returns the response of the method sale the API of Azul.
+     * @access	public
+     * @param  array, boolean
+     * @return object array
+     */
     public function sale(array $data = [], $hasToken = FALSE)
     {
         if(!empty($data))
         {
-            $expectedData = ($hasToken == FALSE)? ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', "Amount"] : ['DataVaultToken', 'CustomOrderId', "Amount", "Itbis"];
-
-            $valid = $this->validation($data, $expectedData, 'required');
+            $expectedData   = ($hasToken == FALSE)? ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', "Amount"] : ['DataVaultToken', 'CustomOrderId', "Amount", "Itbis"];
+            $valid          = $this->validation($data, $expectedData, 'required');
 
             if($valid['Valid'] == FALSE)
             {
@@ -68,10 +87,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the method refund the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function refund(array $data = [])
     {
         if(!empty($data))
@@ -94,10 +119,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA','ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA','ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the method hold the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function hold(array $data = [])
     {
         if(!empty($data))
@@ -118,10 +149,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the method post the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function post(array $data = [])
     {
         if(!empty($data))
@@ -143,10 +180,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the method cancel the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function cancel(array $data = [])
     {
         if(!empty($data))
@@ -168,10 +211,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the verify cancel the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function verify(array $data = [])
     {
         if(!empty($data))
@@ -193,10 +242,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the verify createToken the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function createToken(array $data = [])
     {
         if(!empty($data))
@@ -219,10 +274,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the response of the verify deleteToken the API of Azul.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function deleteToken(array $data = [])
     {
         if(!empty($data))
@@ -245,10 +306,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Generates the request to the Azul API and returns the response of the same.
+     * @access	public
+     * @param  array, string
+     * @return object array
+     */
     public function request($body, $endpoint = '')
     {
         $headers    = [
@@ -263,6 +330,12 @@ class Azul
         return \GuzzleHttp\json_decode($res->getBody()->getContents());
     }
 
+    /**
+     * Set the configuration required by the Azul API.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function setSettings(array $data = [])
     {
         if(!empty($data))
@@ -277,10 +350,16 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseMessage' => $this->msgErro, 'Data' => $data)));
         }
     }
 
+    /**
+     * Set the initial or default body values of the Azul API request.
+     * @access	public
+     * @param  array
+     * @return object array
+     */
     public function setDefaultBody(array $data = [])
     {
         if(!empty($data))
@@ -295,15 +374,27 @@ class Azul
         }
         else
         {
-            return array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseCode' => $this->msgError, 'Data' => $data);
+            return json_decode(json_encode(array('ResponseCode' => 'error', 'ErrorDescription' => 'INCORRECT_DATA', 'ResponseCode' => $this->msgError, 'Data' => $data)));
         }
     }
 
+    /**
+     * Returns the configuration values.
+     * @access	public
+     * @param  array
+     * @return array
+     */
     public function getSettings()
     {
         return $this->settings;
     }
 
+    /**
+     * Returns the default values of the request body.
+     * @access	public
+     * @param  array
+     * @return array
+     */
     public function getDefaultBody()
     {
         return $this->defaultBody;
