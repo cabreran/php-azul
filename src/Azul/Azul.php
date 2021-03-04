@@ -78,6 +78,11 @@ class Azul
                 $body             = $this->setBody($data);
                 $body["TrxType" ] = "Sale";
 
+                if($hasToken == TRUE)
+                {
+                    unset($body["SaveToDataVault"]);
+                }
+
                 return $this->request($body);
             }
             else
@@ -101,7 +106,7 @@ class Azul
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ["AzulOrderId", "OriginalDate", "Amount", "CustomOrderId"], 'required');
+            $valid = $this->validation($data, ["AzulOrderId", "OriginalDate", "Amount"], 'required');
 
             if($valid['Valid'] == FALSE)
             {
@@ -129,16 +134,22 @@ class Azul
      * @param  array
      * @return object array
      */
-    public function hold(array $data = [])
+    public function hold(array $data = [], $hasToken = FALSE)
     {
         if(!empty($data))
         {
-            $valid = $this->validation($data, ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', 'OriginalDate', "Amount"], 'required');
+            $expectedData   = ($hasToken == FALSE)? ['CardNumber', 'Expiration', 'CVC', 'CustomOrderId', 'OriginalDate', "Amount"] : ['DataVaultToken', 'CustomOrderId', "Amount", "Itbis"];
+            $valid          = $this->validation($data, $expectedData, 'required');
 
             if($valid['Valid'] == FALSE)
             {
-                $body                     = $this->setBody($data);
-                $body["TrxType"]          = "Hold";
+                $body                           = $this->setBody($data);
+                $body["TrxType"]                = "Hold";
+
+                if($hasToken == TRUE)
+                {
+                    unset($body["SaveToDataVault"]);
+                }
 
                 return $this->request($body);
             }
@@ -402,6 +413,12 @@ class Azul
 
     /* Prinvate Method ---------------------------------------------------------------------------------------------- */
 
+    /**
+     * Set the initial or default body values of the Azul API request.
+     * @access	private
+     * @param  array, array
+     * @return array
+     */
     private function setBody($data, $customData = FALSE)
     {
         $res = $this->defaultBody;
@@ -428,6 +445,12 @@ class Azul
         return $res;
     }
 
+    /**
+     * Validation
+     * @access	private
+     * @param  array, array, string
+     * @return array
+     */
     private function validation(array $data, array $expectedData, $action)
     {
         $action = explode('|', $action);
@@ -446,6 +469,12 @@ class Azul
         return $res;
     }
 
+    /**
+     * Required
+     * @access	private
+     * @param  array, array
+     * @return array
+     */
     private function required(array $data, array $expectedData)
     {
         $fieldReq  = '';
