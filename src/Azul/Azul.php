@@ -411,7 +411,7 @@ class Azul
         return $this->defaultBody;
     }
 
-    /* Private Method ---------------------------------------------------------------------------------------------- */
+    /* Private Method ----------------------------------------------------------------------------------------------- */
 
     /**
      * Set the initial or default body values of the Azul API request.
