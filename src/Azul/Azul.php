@@ -62,7 +62,7 @@ class Azul
 
     /**
      * Returns the response of the method sale the API of Azul.
-     * @access	public
+     * @access public
      * @param  array, boolean
      * @return object array
      */
@@ -98,7 +98,7 @@ class Azul
 
     /**
      * Returns the response of the method refund the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -130,7 +130,7 @@ class Azul
 
     /**
      * Returns the response of the method hold the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -166,7 +166,7 @@ class Azul
 
     /**
      * Returns the response of the method post the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -197,7 +197,7 @@ class Azul
 
     /**
      * Returns the response of the method cancel the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -228,7 +228,7 @@ class Azul
 
     /**
      * Returns the response of the verify cancel the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -259,7 +259,7 @@ class Azul
 
     /**
      * Returns the response of the verify createToken the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -291,7 +291,7 @@ class Azul
 
     /**
      * Returns the response of the verify deleteToken the API of Azul.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -323,7 +323,7 @@ class Azul
 
     /**
      * Generates the request to the Azul API and returns the response of the same.
-     * @access	public
+     * @access public
      * @param  array, string
      * @return object array
      */
@@ -343,7 +343,7 @@ class Azul
 
     /**
      * Set the configuration required by the Azul API.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -367,7 +367,7 @@ class Azul
 
     /**
      * Set the initial or default body values of the Azul API request.
-     * @access	public
+     * @access public
      * @param  array
      * @return object array
      */
@@ -391,7 +391,7 @@ class Azul
 
     /**
      * Returns the configuration values.
-     * @access	public
+     * @access public
      * @param  array
      * @return array
      */
@@ -402,7 +402,7 @@ class Azul
 
     /**
      * Returns the default values of the request body.
-     * @access	public
+     * @access public
      * @param  array
      * @return array
      */
@@ -415,7 +415,7 @@ class Azul
 
     /**
      * Set the initial or default body values of the Azul API request.
-     * @access	private
+     * @access private
      * @param  array, array
      * @return array
      */
@@ -447,7 +447,7 @@ class Azul
 
     /**
      * Validation
-     * @access	private
+     * @access private
      * @param  array, array, string
      * @return array
      */
@@ -471,7 +471,7 @@ class Azul
 
     /**
      * Required
-     * @access	private
+     * @access private
      * @param  array, array
      * @return array
      */
